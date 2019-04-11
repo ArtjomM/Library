@@ -3,6 +3,8 @@ package controller;
 import entity.Book;
 import entity.Reader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,7 +24,8 @@ import javax.servlet.http.HttpServletResponse;
     "/createReader",
 })
 public class LibraryController extends HttpServlet {
-
+    List<Book> listBooks = new ArrayList<>();
+    List<Reader> listReaders = new ArrayList<>();
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -74,7 +77,8 @@ public class LibraryController extends HttpServlet {
                String author = request.getParameter("author");
                String year = request.getParameter("year");
                book = new Book(1L, name, author, new Integer(year));
-               request.setAttribute("book", book); // Создание переменной book в контексте обработки jsp
+               listBooks.add(book);
+               request.setAttribute("listBooks", listBooks); // Создание переменной book в контексте обработки jsp
                request.getRequestDispatcher("/index.jsp")
                     .forward(request, response); // Формирование ответа браузеру
         break;
@@ -89,7 +93,8 @@ public class LibraryController extends HttpServlet {
                String surname = request.getParameter("surname");
                String yearReader = request.getParameter("yearReader");
                reader = new Reader(1L, nameReader, surname, new Integer(yearReader));
-               request.setAttribute("reader", reader); // Создание переменной book в контексте обработки jsp
+               listReaders.add(reader);
+               request.setAttribute("listReaders", listReaders); // Создание переменной book в контексте обработки jsp
                request.getRequestDispatcher("/index.jsp")
                     .forward(request, response); // Формирование ответа браузеру
         break;

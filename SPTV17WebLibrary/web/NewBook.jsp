@@ -14,7 +14,7 @@
     <body>
         <h1>Hello World!</h1>
         
-        <form action="createRader" method="POST">
+        <form action="createBook" method="POST">
         Название книги: <br>
         <input type="text" name="name"><br>
         автор: <br>
