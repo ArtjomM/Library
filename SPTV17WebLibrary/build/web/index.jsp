@@ -21,13 +21,14 @@
                  ${book}<br>
              </c:forEach>
              
+            <br>список читателей:     
             <c:forEach var="reader" items="${listReaders}">
                  ${reader}<br>
              </c:forEach>     
                  
                  
              
-             <a href="showNewBook">Новая книга</a><br>
+             <br><a href="showNewBook">Новая книга</a><br>
              <a href="showNewReader">Новый читатель</a>
     </body>
 </html>

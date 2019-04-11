@@ -78,7 +78,8 @@ public class LibraryController extends HttpServlet {
                String year = request.getParameter("year");
                book = new Book(1L, name, author, new Integer(year));
                listBooks.add(book);
-               request.setAttribute("listBooks", listBooks); // Создание переменной book в контексте обработки jsp
+               request.setAttribute("listBooks", listBooks);
+               request.setAttribute("listReaders", listReaders); // Создание переменной book в контексте обработки jsp
                request.getRequestDispatcher("/index.jsp")
                     .forward(request, response); // Формирование ответа браузеру
         break;
@@ -94,7 +95,8 @@ public class LibraryController extends HttpServlet {
                String yearReader = request.getParameter("yearReader");
                reader = new Reader(1L, nameReader, surname, new Integer(yearReader));
                listReaders.add(reader);
-               request.setAttribute("listReaders", listReaders); // Создание переменной book в контексте обработки jsp
+               request.setAttribute("listReaders", listReaders); 
+               request.setAttribute("listBooks", listBooks);// Создание переменной book в контексте обработки jsp
                request.getRequestDispatcher("/index.jsp")
                     .forward(request, response); // Формирование ответа браузеру
         break;
